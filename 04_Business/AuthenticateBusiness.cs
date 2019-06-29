@@ -1,26 +1,23 @@
-﻿using DAL;
-using DTO;
-using System.Collections.Generic;
+﻿using Business.Interface;
+using Entities;
+using DAL;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Business
 {
-    public class AuthenticateBusiness
+    public class AuthenticateBusiness: IAuthenBusiness
     {
+        AuthenticationDB _context;
         public AuthenticateBusiness()
         {
+            _context = new AuthenticationDB();
         }
-        AuthenticationDB _context = new AuthenticationDB();
-        public List<RoleDto> GetRolesDto()
+        public string[] GetRolesDto()
         {
-            List<RoleDto> Roles = (from b in _context.Roles.ToList()
-                        select new RoleDto()
-                        {
-                            Id = b.Id,
-                            Name = b.Name,
-                            Enable = b.Enable
-                        }).ToList();
-            return Roles;
+            var roles = (from b in _context.Roles.ToList()
+                        select b.Name).ToArray();
+            return roles;
             
         }
     }

@@ -13,19 +13,20 @@ namespace DAL.Migrations
         {
             AutomaticMigrationsEnabled = true;
         }
-
+        public static bool isInitDb = false;
         protected override void Seed(DAL.AuthenticationDB context)
         {
             //  This method will be called after migrating to the latest version.
             
             SeedRoles(context);
             SeedUsers(context);
+            isInitDb = false;
         }
         string[] roles = new string[] { "Owner", "Administrator", "Manager", "Editor" };
         void SeedRoles(AuthenticationDB context)
         {
-            //if (!isInitDB)
-            //    return;
+            if (!isInitDb)
+                return;
 
             foreach (string role in roles)
             {
@@ -39,11 +40,12 @@ namespace DAL.Migrations
                     });
                 }
             }
+            context.SaveChanges();
         }
         void SeedUsers(AuthenticationDB context)
         {
-            //if (!isInitDB)
-            //    return;
+            if (!isInitDb)
+                return;
 
             var pwd = new PasswordHasher();
             string hashed = pwd.HashPassword("admin@123");
@@ -66,6 +68,7 @@ namespace DAL.Migrations
                     userStore.AddToRoleAsync(admin, role);
                 }
             }
+            context.SaveChanges();
         }
     }
 }

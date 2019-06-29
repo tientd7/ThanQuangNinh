@@ -17,8 +17,9 @@ namespace DAL
         public AuthenticationDB() : base("BasicConnect")
         {
             Configuration.ProxyCreationEnabled = false;
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthenticationDB, Configuration>());
         }
-
+        
     }
    
 }

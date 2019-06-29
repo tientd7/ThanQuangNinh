@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Unity.AspNet.WebApi;
 
 namespace ThanQuangNinh
 {
@@ -19,6 +21,9 @@ namespace ThanQuangNinh
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
+
 
             //Migration db
             Configuration configuration = new Configuration();
@@ -32,6 +37,8 @@ namespace ThanQuangNinh
 
             //This will run the migration update script and will run Seed() method
             migrator.Update();
+
+
         }
     }
 }
