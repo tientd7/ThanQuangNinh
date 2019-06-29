@@ -10,7 +10,7 @@ namespace Business
         {
             container.RegisterType<IAuthenBusiness, AuthenticateBusiness>();
 
-            
+            DlUnityConfig.RegisterTypes(container);
         }
     }
 }

@@ -94,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationDB.cs" />
+    <Compile Include="DlUnityConfig.cs" />
+    <Compile Include="Interface\IDbContext.cs" />
     <Compile Include="Migrations\201906291727510_InitDb.cs" />
     <Compile Include="Migrations\201906291727510_InitDb.Designer.cs">
       <DependentUpon>201906291727510_InitDb.cs</DependentUpon>

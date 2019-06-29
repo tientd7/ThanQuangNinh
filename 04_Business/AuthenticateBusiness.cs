@@ -3,19 +3,20 @@ using Entities;
 using DAL;
 using System.Linq;
 using System.Data.Entity;
+using DAL.Interface;
 
 namespace Business
 {
     public class AuthenticateBusiness: IAuthenBusiness
     {
-        AuthenticationDB _context;
-        public AuthenticateBusiness()
+        IDbContext _context;
+        public AuthenticateBusiness(IDbContext context)
         {
-            _context = new AuthenticationDB();
+            _context = context;
         }
         public string[] GetRolesDto()
         {
-            var roles = (from b in _context.Roles.ToList()
+            var roles = (from b in _context.Set<Role>().ToList()
                         select b.Name).ToArray();
             return roles;
             

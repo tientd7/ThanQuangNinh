@@ -1,4 +1,5 @@
-﻿using DAL.Migrations;
+﻿using DAL.Interface;
+using DAL.Migrations;
 using Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class AuthenticationDB: IdentityDbContext<User,Role,string,IdentityUserLogin,IdentityUserRole,IdentityUserClaim>
+    public class AuthenticationDB: IdentityDbContext<User,Role,string,IdentityUserLogin,IdentityUserRole,IdentityUserClaim>,IDbContext
     {
         public AuthenticationDB() : base("BasicConnect")
         {
