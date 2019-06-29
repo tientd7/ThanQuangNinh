@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Business;
 
 namespace ThanQuangNinh.Controllers
 {
     public class HomeController : Controller
     {
+        AuthenticateBusiness authenticateBusiness = new AuthenticateBusiness();
         public ActionResult Index()
         {
-            return View();
+            var Roles = authenticateBusiness.GetRolesDto();
+            return View(Roles);
         }
 
         public ActionResult About()
