@@ -9,7 +9,6 @@ namespace Business
     {
         public AuthenticateBusiness()
         {
-            
         }
         AuthenticationDB _context = new AuthenticationDB();
         public List<RoleDto> GetRolesDto()

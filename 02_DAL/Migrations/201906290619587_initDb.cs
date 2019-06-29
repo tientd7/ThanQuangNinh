@@ -7,8 +7,6 @@ namespace DAL.Migrations
     {
         public override void Up()
         {
-            Configuration.isInitDB = true;
-
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new

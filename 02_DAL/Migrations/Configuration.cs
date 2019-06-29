@@ -9,22 +9,20 @@ namespace DAL.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<DAL.AuthenticationDB>
     {
-        public static bool isInitDB = false;
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            Seed(new AuthenticationDB());
         }
 
         protected override void Seed(DAL.AuthenticationDB context)
         {
             //  This method will be called after migrating to the latest version.
-
+            
             SeedRoles(context);
             SeedUsers(context);
         }
         string[] roles = new string[] { "Owner", "Administrator", "Manager", "Editor" };
-        private void SeedRoles(AuthenticationDB context)
+        void SeedRoles(AuthenticationDB context)
         {
             //if (!isInitDB)
             //    return;
@@ -42,7 +40,7 @@ namespace DAL.Migrations
                 }
             }
         }
-        private void SeedUsers(AuthenticationDB context)
+        void SeedUsers(AuthenticationDB context)
         {
             //if (!isInitDB)
             //    return;

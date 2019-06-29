@@ -8,6 +8,10 @@ namespace DTO
 {
     public class RoleDto
     {
+        public static string Admin = "";
+        public static string Admin = "";
+        public static string Admin = "";
+        public static string Admin = "";
         public string Id { set; get; }
         public string Name { set; get; }
         public bool Enable { set; get; }
