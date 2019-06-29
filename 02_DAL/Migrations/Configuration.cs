@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DAL.AuthenticationDB>
+    public sealed class Configuration : DbMigrationsConfiguration<DAL.AuthenticationDB>
     {
         public static bool isInitDB = false;
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-
+            Seed(new AuthenticationDB());
         }
 
         protected override void Seed(DAL.AuthenticationDB context)
@@ -31,11 +31,14 @@ namespace DAL.Migrations
 
             foreach (string role in roles)
             {
-                RoleStore<Role> roleStore = new RoleStore<Role>(context);
 
                 if (!context.Roles.Any(r => r.Name == role))
                 {
-                    roleStore.CreateAsync(new Role(role));
+                    context.Roles.AddOrUpdate(new Role
+                    {
+                        Name = role,
+                        Enable = true
+                    });
                 }
             }
         }

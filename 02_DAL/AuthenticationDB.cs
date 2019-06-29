@@ -1,9 +1,11 @@
-﻿using Entities;
+﻿using DAL.Migrations;
+using Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,10 @@ namespace DAL
         public AuthenticationDB() : base("BasicConnect")
         {
             Configuration.ProxyCreationEnabled = false;
+            //Configuration configuration = new Configuration();
+            //configuration.ContextType = typeof(AuthenticationDB);
+            //var migrator = new DbMigrator(configuration);
+            //migrator.Update();
         }
 
         //public DbSet<User> Users { set; get; }
