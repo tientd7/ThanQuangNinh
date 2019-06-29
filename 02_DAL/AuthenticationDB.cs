@@ -17,14 +17,8 @@ namespace DAL
         public AuthenticationDB() : base("BasicConnect")
         {
             Configuration.ProxyCreationEnabled = false;
-            //Configuration configuration = new Configuration();
-            //configuration.ContextType = typeof(AuthenticationDB);
-            //var migrator = new DbMigrator(configuration);
-            //migrator.Update();
         }
 
-        //public DbSet<User> Users { set; get; }
-        //public DbSet<Role> Roles { set; get; }
     }
    
 }
