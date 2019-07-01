@@ -1,4 +1,5 @@
 ﻿using Business.Interface;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace ApiMVC.Controllers
 {
+    [Authorize(Roles = RoleEnum.Admin)]
     public class ValuesController : ApiController
     {
         private readonly IAuthenBusiness _authen;
@@ -16,6 +18,7 @@ namespace ApiMVC.Controllers
             _authen = authen;
         }
         // GET api/values
+        [AllowAnonymous]
         public IEnumerable<string> Get()
         {
 
