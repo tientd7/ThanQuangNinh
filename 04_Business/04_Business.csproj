@@ -78,10 +78,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\00CommonTDT\00_CommonTDT.csproj">
-      <Project>{2f4529ad-88d7-4602-abaa-7b75dced63b2}</Project>
-      <Name>00_CommonTDT</Name>
-    </ProjectReference>
     <ProjectReference Include="..\01_Entities\01_Entities.csproj">
       <Project>{170c29e7-4f35-4b7a-a260-7aac0acd4a55}</Project>
       <Name>01_Entities</Name>

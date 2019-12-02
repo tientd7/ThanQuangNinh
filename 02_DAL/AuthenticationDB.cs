@@ -20,7 +20,14 @@ namespace DAL
             Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthenticationDB, Configuration>());
         }
-        
+        public DbSet<Lesson> Lessons { set; get; }
+        public DbSet<Course> Courses { set; get; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Course>().HasMany(t => t.Lessons).WithRequired(t => t.Course);
+        }
+
     }
    
 }
