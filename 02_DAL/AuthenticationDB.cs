@@ -22,6 +22,7 @@ namespace DAL
         }
         public DbSet<Lesson> Lessons { set; get; }
         public DbSet<Course> Courses { set; get; }
+        public DbSet<Topic> Topics { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

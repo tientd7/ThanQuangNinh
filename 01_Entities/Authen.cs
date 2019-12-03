@@ -15,6 +15,7 @@ namespace Entities
         }
         public string Address { get; set; }
         public string Sex { get; set; }
+        public bool IsVip { set; get; }
         public bool Enable { set; get; }
     }
     public class Role : IdentityRole

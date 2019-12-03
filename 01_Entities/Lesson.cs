@@ -16,6 +16,7 @@ namespace Entities
         public string Description { set; get; }
         public string ImageUrl { set; get; }
         public string VideoUrl { set; get; }
+        public string Grama { set; get; }
         public bool isVip { set; get; }
         [ForeignKey("Course")]
         public int CourseId { set; get; }

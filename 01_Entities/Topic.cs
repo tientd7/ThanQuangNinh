@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Course
+    public class Topic
     {
         [Key]
         public int Id { set; get; }
-        [Display(Name ="Course Name")]
         public string Name { set; get; }
         public string Description { set; get; }
-        public string ImageUrl { set; get; }
+        public string Content { set; get; }
         public bool IsEnable { set; get; }
-        public virtual ICollection<Lesson> Lessons { set; get; }
     }
 }
