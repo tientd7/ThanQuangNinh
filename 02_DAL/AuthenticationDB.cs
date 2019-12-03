@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class AuthenticationDB: IdentityDbContext<User,Role,string,IdentityUserLogin,IdentityUserRole,IdentityUserClaim>,IDbContext
+    public class AuthenticationDB: IdentityDbContext<User,Role,string,IdentityUserLogin,IdentityUserRole,IdentityUserClaim>, IDbContext
     {
         public AuthenticationDB() : base("BasicConnect")
         {
@@ -31,4 +31,5 @@ namespace DAL
 
     }
    
+
 }

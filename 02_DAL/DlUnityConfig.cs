@@ -1,4 +1,5 @@
 ﻿using DAL.Interface;
+using DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace DAL
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IDbContext, AuthenticationDB>();
+            container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
         }
     }
 }

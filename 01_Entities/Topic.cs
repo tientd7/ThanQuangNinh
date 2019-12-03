@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Topic
+    public class Topic : IEntity
     {
         [Key]
         public int Id { set; get; }
