@@ -36,5 +36,15 @@ namespace Business
 
             return rst;
         }
+
+        public CourseComponent GetById(int id)
+        {
+            var course = _repository.FirstOrDefault(e => e.Id == id && e.IsEnable);
+            if (course == null)
+                return null;
+            else
+            return new CourseComponent(course);
+            
+        }
     }
 }

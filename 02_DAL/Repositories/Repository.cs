@@ -41,12 +41,13 @@ namespace DAL.Repositories
 
         public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<TEntity>().FirstOrDefault(expression);
         }
 
         public TEntity GetById(int id)
         {
-            throw new NotImplementedException();
+            var rst = _dbContext.Set<TEntity>().Find(id);
+            return rst;
         }
 
         public IQueryable<TEntity> GetMany(Expression<Func<TEntity, bool>> expression)

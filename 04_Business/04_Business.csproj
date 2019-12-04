@@ -77,6 +77,8 @@
     <Compile Include="CourseBusiness.cs" />
     <Compile Include="Interface\IAuthenBusiness.cs" />
     <Compile Include="Interface\ICourseBusiness.cs" />
+    <Compile Include="Interface\ILessonBusiness.cs" />
+    <Compile Include="LessonBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

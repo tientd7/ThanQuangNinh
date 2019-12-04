@@ -20,9 +20,11 @@ namespace ApiMVC.Controllers
     public class CoursesApiController : ApiController
     {
         private readonly ICourseBusiness _course;
-        public CoursesApiController(ICourseBusiness course)
+        private readonly ILessonBusiness _lesson;
+        public CoursesApiController(ICourseBusiness course, ILessonBusiness lesson)
         {
             _course = course;
+            _lesson = lesson;
         }
         // GET: api/CoursesApi
         /// <summary>
@@ -35,102 +37,97 @@ namespace ApiMVC.Controllers
         /// <param name="pageSize"></param>
         /// <returns></returns>
         [ResponseType(typeof(CourseDTO))]
-        public HttpResponseMessage GetCourses(int pageIndex =1, int pageSize = 20)
+        public HttpResponseMessage GetCourses(int pageIndex = 1, int pageSize = 20)
         {
-            return Request.CreateResponse(_course.GetAll(pageIndex,pageSize));
+            return Request.CreateResponse(_course.GetAll(pageIndex, pageSize));
         }
-    }
         // GET: api/CoursesApi/5
-    //    [ResponseType(typeof(Course))]
-    //    public IHttpActionResult GetCourse(int id)
-    //    {
-    //        Course course = db.Courses.Find(id);
-    //        if (course == null)
-    //        {
-    //            return NotFound();
-    //        }
+        [ResponseType(typeof(LessonDTO))]
+        public IHttpActionResult GetCourse(int id, int pageIndex = 1, int pageSize = 20)
+        {
+            
 
-    //        return Ok(course);
-    //    }
+            return Ok(_lesson.GetByCourse(id, pageIndex, pageSize));
+        }
 
-    //    // PUT: api/CoursesApi/5
-    //    [ResponseType(typeof(void))]
-    //    public IHttpActionResult PutCourse(int id, Course course)
-    //    {
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return BadRequest(ModelState);
-    //        }
+        //    // PUT: api/CoursesApi/5
+        //    [ResponseType(typeof(void))]
+        //    public IHttpActionResult PutCourse(int id, Course course)
+        //    {
+        //        if (!ModelState.IsValid)
+        //        {
+        //            return BadRequest(ModelState);
+        //        }
 
-    //        if (id != course.Id)
-    //        {
-    //            return BadRequest();
-    //        }
+        //        if (id != course.Id)
+        //        {
+        //            return BadRequest();
+        //        }
 
-    //        db.Entry(course).State = EntityState.Modified;
+        //        db.Entry(course).State = EntityState.Modified;
 
-    //        try
-    //        {
-    //            db.SaveChanges();
-    //        }
-    //        catch (DbUpdateConcurrencyException)
-    //        {
-    //            if (!CourseExists(id))
-    //            {
-    //                return NotFound();
-    //            }
-    //            else
-    //            {
-    //                throw;
-    //            }
-    //        }
+        //        try
+        //        {
+        //            db.SaveChanges();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!CourseExists(id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
 
-    //        return StatusCode(HttpStatusCode.NoContent);
-    //    }
+        //        return StatusCode(HttpStatusCode.NoContent);
+        //    }
 
-    //    // POST: api/CoursesApi
-    //    [ResponseType(typeof(Course))]
-    //    public IHttpActionResult PostCourse(Course course)
-    //    {
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return BadRequest(ModelState);
-    //        }
+        //    // POST: api/CoursesApi
+        //    [ResponseType(typeof(Course))]
+        //    public IHttpActionResult PostCourse(Course course)
+        //    {
+        //        if (!ModelState.IsValid)
+        //        {
+        //            return BadRequest(ModelState);
+        //        }
 
-    //        db.Courses.Add(course);
-    //        db.SaveChanges();
+        //        db.Courses.Add(course);
+        //        db.SaveChanges();
 
-    //        return CreatedAtRoute("DefaultApi", new { id = course.Id }, course);
-    //    }
+        //        return CreatedAtRoute("DefaultApi", new { id = course.Id }, course);
+        //    }
 
-    //    // DELETE: api/CoursesApi/5
-    //    [ResponseType(typeof(Course))]
-    //    public IHttpActionResult DeleteCourse(int id)
-    //    {
-    //        Course course = db.Courses.Find(id);
-    //        if (course == null)
-    //        {
-    //            return NotFound();
-    //        }
+        //    // DELETE: api/CoursesApi/5
+        //    [ResponseType(typeof(Course))]
+        //    public IHttpActionResult DeleteCourse(int id)
+        //    {
+        //        Course course = db.Courses.Find(id);
+        //        if (course == null)
+        //        {
+        //            return NotFound();
+        //        }
 
-    //        db.Courses.Remove(course);
-    //        db.SaveChanges();
+        //        db.Courses.Remove(course);
+        //        db.SaveChanges();
 
-    //        return Ok(course);
-    //    }
+        //        return Ok(course);
+        //    }
 
-    //    protected override void Dispose(bool disposing)
-    //    {
-    //        if (disposing)
-    //        {
-    //            db.Dispose();
-    //        }
-    //        base.Dispose(disposing);
-    //    }
+        //    protected override void Dispose(bool disposing)
+        //    {
+        //        if (disposing)
+        //        {
+        //            db.Dispose();
+        //        }
+        //        base.Dispose(disposing);
+        //    }
 
-    //    private bool CourseExists(int id)
-    //    {
-    //        return db.Courses.Count(e => e.Id == id) > 0;
-    //    }
-    //}
+        //    private bool CourseExists(int id)
+        //    {
+        //        return db.Courses.Count(e => e.Id == id) > 0;
+        //    }
+    }
 }

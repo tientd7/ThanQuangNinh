@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,15 @@ namespace DTO
     }
     public class CourseComponent
     {
+        public CourseComponent() { }
+        public CourseComponent(Course course)
+        {
+            Id = course.Id;
+            Name = course.Name;
+            Description = course.Description;
+            ImageUrl = course.ImageUrl;
+            IsEnable = course.IsEnable;
+        }
         public int Id { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }

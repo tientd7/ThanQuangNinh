@@ -10,6 +10,7 @@ namespace Business
         {
             container.RegisterType<IAuthenBusiness, AuthenticateBusiness>();
             container.RegisterType<ICourseBusiness, CourseBusiness>();
+            container.RegisterType<ILessonBusiness, LessonBusiness>();
 
             DlUnityConfig.RegisterTypes(container);
         }

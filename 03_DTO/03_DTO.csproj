@@ -43,8 +43,15 @@
   <ItemGroup>
     <Compile Include="Authen.cs" />
     <Compile Include="CourseDTO.cs" />
+    <Compile Include="LessonDTO.cs" />
     <Compile Include="Paging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\01_Entities\01_Entities.csproj">
+      <Project>{170C29E7-4F35-4B7A-A260-7AAC0ACD4A55}</Project>
+      <Name>01_Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
