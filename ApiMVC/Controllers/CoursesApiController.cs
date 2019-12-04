@@ -26,9 +26,14 @@ namespace ApiMVC.Controllers
         }
         // GET: api/CoursesApi
         /// <summary>
-        /// API Get All Courses
+        /// Get All Courses with paging
         /// </summary>
-        /// <returns>Json type</returns>
+        /// <remark>
+        /// Default paging with pageindex =1 and pagesize = 20
+        /// </remark>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
         [ResponseType(typeof(CourseDTO))]
         public HttpResponseMessage GetCourses(int pageIndex =1, int pageSize = 20)
         {
