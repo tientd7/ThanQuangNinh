@@ -31,7 +31,8 @@ namespace Business
                                   Name = s.Name,
                                   Description = s.Description,
                                   IsEnable = s.IsEnable,
-                                  Content = s.Content
+                                  Vocalbularies = s.Vocalbularies,
+                                  Sentences = s.Content
                               }).ToList();
 
             return rst;

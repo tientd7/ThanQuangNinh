@@ -13,6 +13,8 @@ namespace Entities
         public int Id { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }
+        public string Vocalbularies { set; get; }
+        [Display(Name="Sentences")]
         public string Content { set; get; }
         public bool IsEnable { set; get; }
     }

@@ -19,6 +19,31 @@ namespace Business
             _repository = repository;
             _course = course;
         }
+
+        public LessonDTO GetAll(int pageIndex = 1, int pageSize = 20)
+        {
+            LessonDTO rst = new LessonDTO();
+            
+            var query = _repository.GetMany(e => e.Course.IsEnable).OrderBy(t => t.Name);
+
+            rst.Pager = new Paging(query.Count(), pageSize, pageIndex);
+            rst.Components = (from s in query.Skip((pageIndex - 1) * pageSize).Take(pageSize)
+
+                              select new LessonComponent()
+                              {
+                                  Id = s.Id,
+                                  Name = s.Name,
+                                  Description = s.Description,
+                                  ImageUrl = s.ImageUrl,
+                                  CourseId = s.CourseId,
+                                  CourseName = s.Course.Name,
+                                  Grama = s.Grama,
+                                  VideoUrl = s.VideoUrl,
+                                  isVip = s.isVip
+                              }).ToList();
+            return rst;
+        }
+
         public LessonDTO GetByCourse(int courseId, int pageIndex = 1, int pageSize = 20)
         {
             LessonDTO rst = new LessonDTO();

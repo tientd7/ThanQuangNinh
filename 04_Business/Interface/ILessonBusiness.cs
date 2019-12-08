@@ -11,5 +11,6 @@ namespace Business.Interface
     {
         LessonDTO GetByCourse(int courseId, int pageIndex = 1, int pageSize = 20);
         LessonComponent GetById(int lessonId);
+        LessonDTO GetAll(int pageIndex = 1, int pageSize = 20);
     }
 }

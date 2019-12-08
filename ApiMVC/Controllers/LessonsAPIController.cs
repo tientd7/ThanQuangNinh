@@ -24,11 +24,11 @@ namespace ApiMVC.Controllers
             _lesson = lesson;
         }
 
-        //[ResponseType(typeof(LessonDTO))]
-        //public HttpResponseMessage GetLesson(int courseId, int pageIndex = 1, int pageSize = 20)
-        //{
-        //    return Request.CreateResponse(_lesson.GetByCourse(courseId, pageIndex, pageSize));
-        //}
+        [ResponseType(typeof(LessonDTO))]
+        public HttpResponseMessage GetLessons(int pageIndex = 1, int pageSize = 20)
+        {
+            return Request.CreateResponse(_lesson.GetAll( pageIndex, pageSize));
+        }
 
         [ResponseType(typeof(LessonComponent))]
         public HttpResponseMessage GetLesson(int id)

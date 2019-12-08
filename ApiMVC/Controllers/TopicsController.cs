@@ -47,7 +47,7 @@ namespace ApiMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,Content,IsEnable")] Topic topic)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Vocalbularies,Content,IsEnable")] Topic topic)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace ApiMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,Content,IsEnable")] Topic topic)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,Vocalbularies,Content,IsEnable")] Topic topic)
         {
             if (ModelState.IsValid)
             {
