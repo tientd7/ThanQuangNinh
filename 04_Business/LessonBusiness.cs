@@ -37,7 +37,10 @@ namespace Business
                                   Description = s.Description,
                                   ImageUrl = s.ImageUrl,
                                   CourseId = s.CourseId,
-                                  CourseName = s.Course.Name
+                                  CourseName = s.Course.Name,
+                                  Grama = s.Grama,
+                                  VideoUrl = s.VideoUrl,
+                                  isVip = s.isVip
                               }).ToList();
             return rst;
         }

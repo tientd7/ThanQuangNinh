@@ -21,18 +21,12 @@ namespace ApiMVC.Controllers
             return Request.CreateResponse(_topic.GetAll(pageIndex, pageSize));
         }
 
-        //// GET: api/TopicsAPI/5
-        //[ResponseType(typeof(Topic))]
-        //public IHttpActionResult GetTopic(int id)
-        //{
-        //    Topic topic = db.Topics.Find(id);
-        //    if (topic == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(topic);
-        //}
+        // GET: api/TopicsAPI/5
+        [ResponseType(typeof(TopicComponent))]
+        public HttpResponseMessage GetTopic(int id)
+        {
+            return Request.CreateResponse(_topic.GetById(id));
+        }
 
         //// PUT: api/TopicsAPI/5
         //[ResponseType(typeof(void))]

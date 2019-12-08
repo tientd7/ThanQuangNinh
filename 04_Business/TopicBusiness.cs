@@ -25,7 +25,7 @@ namespace Business
             rst.Pager = new Paging(query.Count(), pageSize, pageIndex);
             rst.Components = (from s in query.Skip((pageIndex - 1) * pageSize).Take(pageSize)
 
-                              select new TopicComponents()
+                              select new TopicComponent()
                               {
                                   Id = s.Id,
                                   Name = s.Name,
@@ -35,6 +35,15 @@ namespace Business
                               }).ToList();
 
             return rst;
+        }
+
+        public TopicComponent GetById(int id)
+        {
+            var topic = _repository.FirstOrDefault(e => e.Id == id && e.IsEnable);
+            if (topic == null)
+                return null;
+            else
+                return new TopicComponent(topic);
         }
     }
 }

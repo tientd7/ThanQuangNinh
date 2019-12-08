@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,22 @@ namespace DTO
     public class TopicDTO
     {
         public Paging Pager { set; get; }
-        public IEnumerable<TopicComponents> Components { set; get; }
+        public IEnumerable<TopicComponent> Components { set; get; }
     }
-    public class TopicComponents
+    public class TopicComponent
     {
+        public TopicComponent()
+        {
+
+        }
+        public TopicComponent(Topic topic)
+        {
+            Id = topic.Id;
+            Name = topic.Name;
+            Description = topic.Description;
+            Content = topic.Content;
+            IsEnable = topic.IsEnable;
+        }
         public int Id { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }

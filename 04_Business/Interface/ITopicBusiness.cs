@@ -10,5 +10,6 @@ namespace Business.Interface
     public interface ITopicBusiness
     {
         TopicDTO GetAll(int pageIndex = 1, int pageSize = 20);
+        TopicComponent GetById(int id);
     }
 }
