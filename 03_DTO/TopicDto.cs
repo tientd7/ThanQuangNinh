@@ -25,12 +25,12 @@ namespace DTO
             Description = topic.Description;
             Sentences = topic.Content;
             IsEnable = topic.IsEnable;
-            Vocalbularies = topic.Vocalbularies;
+            Vocabulary = topic.Vocalbularies;
         }
         public int Id { set; get; }
         public string Name { set; get; }
         public string Description { set; get; }
-        public string Vocalbularies { set; get; }
+        public string Vocabulary { set; get; }
         public string Sentences { set; get; }
         public bool IsEnable { set; get; }
     }
