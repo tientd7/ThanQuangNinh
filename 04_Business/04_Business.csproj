@@ -78,8 +78,10 @@
     <Compile Include="Interface\IAuthenBusiness.cs" />
     <Compile Include="Interface\ICourseBusiness.cs" />
     <Compile Include="Interface\ILessonBusiness.cs" />
+    <Compile Include="Interface\ITopicBusiness.cs" />
     <Compile Include="LessonBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopicBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\01_Entities\01_Entities.csproj">

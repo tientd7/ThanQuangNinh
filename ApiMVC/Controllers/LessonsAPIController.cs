@@ -31,9 +31,9 @@ namespace ApiMVC.Controllers
         //}
 
         [ResponseType(typeof(LessonComponent))]
-        public HttpResponseMessage GetLesson(int lessonId)
+        public HttpResponseMessage GetLesson(int id)
         {
-            return Request.CreateResponse(_lesson.GetById(lessonId));
+            return Request.CreateResponse(_lesson.GetById(id));
         }
         //// GET: api/Lessons1
         //public IQueryable<Lesson> GetLessons()
