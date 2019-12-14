@@ -13,12 +13,16 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class AuthenticationDB: IdentityDbContext<User,Role,string,IdentityUserLogin,IdentityUserRole,IdentityUserClaim>, IDbContext
+    public class AuthenticationDB: IdentityDbContext<User>, IDbContext
     {
         public AuthenticationDB() : base("BasicConnect")
         {
             Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthenticationDB, Configuration>());
+        }
+        public static AuthenticationDB Create()
+        {
+            return new AuthenticationDB();
         }
         public DbSet<Lesson> Lessons { set; get; }
         public DbSet<Course> Courses { set; get; }

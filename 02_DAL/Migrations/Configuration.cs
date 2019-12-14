@@ -13,30 +13,24 @@ namespace DAL.Migrations
         {
             AutomaticMigrationsEnabled = true;
         }
-        public static bool isInitDb = false;
         protected override void Seed(DAL.AuthenticationDB context)
         {
             //  This method will be called after migrating to the latest version.
-            
+
             SeedRoles(context);
             SeedUsers(context);
-            isInitDb = false;
         }
-        string[] roles = new string[] { "Owner", "Administrator", "Manager", "Editor" };
+        string[] roles = new string[] { "Administrator", "Editor", "User" };
         void SeedRoles(AuthenticationDB context)
         {
-            if (!isInitDb)
-                return;
-
             foreach (string role in roles)
             {
 
                 if (!context.Roles.Any(r => r.Name == role))
                 {
-                    context.Roles.AddOrUpdate(new Role
+                    context.Roles.AddOrUpdate(new IdentityRole
                     {
-                        Name = role,
-                        Enable = true
+                        Name = role
                     });
                 }
             }
@@ -44,9 +38,6 @@ namespace DAL.Migrations
         }
         void SeedUsers(AuthenticationDB context)
         {
-            if (!isInitDb)
-                return;
-
             var pwd = new PasswordHasher();
             string hashed = pwd.HashPassword("admin@123");
             User admin = new User()
@@ -61,14 +52,21 @@ namespace DAL.Migrations
             };
             if (!context.Users.Any(u => u.UserName == admin.UserName))
             {
-                var userStore = new UserStore<User>(context);
-                var result = userStore.CreateAsync(admin);
+                UserManager<User> userManager = new UserManager<User>(new UserStore<User>(context));
+
+                userManager.Create(admin);
+
                 foreach (string role in roles)
                 {
-                    userStore.AddToRoleAsync(admin, role);
+                    if (!userManager.IsInRole(admin.Id, role))
+                    {
+                        userManager.AddToRole(admin.Id, role);
+                    }
                 }
             }
             context.SaveChanges();
         }
+
+
     }
 }
