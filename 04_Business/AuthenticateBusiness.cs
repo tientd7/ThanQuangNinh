@@ -16,9 +16,8 @@ namespace Business
         }
         public string[] GetRolesDto()
         {
-            var roles = (from b in _context.Set<Role>().ToList()
-                        select b.Name).ToArray();
-            return roles;
+           
+            return new string[] { "Admin"};
             
         }
     }
