@@ -1,5 +1,4 @@
 ﻿using DAL.Interface;
-using DAL.Migrations;
 using Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -18,7 +17,6 @@ namespace DAL
         public AuthenticationDB() : base("BasicConnect")
         {
             Configuration.ProxyCreationEnabled = false;
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthenticationDB, Configuration>());
         }
         public static AuthenticationDB Create()
         {

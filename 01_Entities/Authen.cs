@@ -22,11 +22,9 @@ namespace Entities
             // Add custom user claims here
             return userIdentity;
         }
-        public string Address { get; set; }
-        public string Sex { get; set; }
         public DateTime? VipExp { set; get; }
         public bool IsVip { set; get; }
-        public bool Enable { set; get; }
+        public bool IsEnable { set; get; }
     }
     //public class Role : IdentityRole
     //{
