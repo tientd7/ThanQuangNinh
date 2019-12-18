@@ -14,7 +14,7 @@ namespace Quantri.Controllers
     [Authorize]
     public class CoursesController : Controller
     {
-        private AuthenticationDB db = new AuthenticationDB();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Courses
         public ActionResult Index()

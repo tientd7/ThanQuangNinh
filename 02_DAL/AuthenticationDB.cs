@@ -14,7 +14,7 @@ namespace DAL
 {
     public class AuthenticationDB: IdentityDbContext<User>, IDbContext
     {
-        public AuthenticationDB() : base("BasicConnect")
+        public AuthenticationDB() : base("AuthenConnect")
         {
             Configuration.ProxyCreationEnabled = false;
         }
@@ -22,6 +22,12 @@ namespace DAL
         {
             return new AuthenticationDB();
         }
+        
+
+    }
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext() : base("BasicConnect") { }
         public DbSet<Lesson> Lessons { set; get; }
         public DbSet<Course> Courses { set; get; }
         public DbSet<Topic> Topics { set; get; }
@@ -30,8 +36,6 @@ namespace DAL
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Course>().HasMany(t => t.Lessons).WithRequired(t => t.Course);
         }
-
     }
-   
 
 }

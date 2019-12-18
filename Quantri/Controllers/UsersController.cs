@@ -14,7 +14,7 @@ namespace Quantri.Controllers
     [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
-        private AuthenticationDB db = new AuthenticationDB();
+        private readonly AuthenticationDB db = new AuthenticationDB();
 
         // GET: Users
         public ActionResult Index()
